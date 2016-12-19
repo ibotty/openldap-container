@@ -3,6 +3,8 @@ MAINTAINER Tobias Florek tob@butter.sh
 
 EXPOSE 33389/udp
 
+ENV PAGER=more EDITOR=vi
+
 RUN set -x \
  && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
  && yum --setopt=tsflags=nodocs -y install epel-release \
