@@ -9,7 +9,8 @@ RUN set -x \
  && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
  && yum --setopt=tsflags=nodocs -y install epel-release \
  && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 \
- && yum --setopt=tsflags=nodocs -y install openldap-servers ldapvi \
+ && yum --setopt=tsflags=nodocs -y install \
+        openldap-servers openldap-clients ldapvi \
  && yum clean all \
  && echo '>>> checking slapd uid' \
  && test "$(id -u ldap)" = 55 \
