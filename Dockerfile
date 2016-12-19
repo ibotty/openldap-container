@@ -3,7 +3,8 @@ MAINTAINER Tobias Florek tob@butter.sh
 
 EXPOSE 33389/udp
 
-ENV PAGER=more EDITOR=vi
+# set env vars that are required by ldapvi
+ENV PAGER=more EDITOR=vi HOME=/var/lib/ldap
 
 RUN set -x \
  && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
