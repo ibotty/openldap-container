@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER Tobias Florek tob@butter.sh
 
-EXPOSE 33389/udp
+EXPOSE 33389/tcp
 
 # set env vars that are required by ldapvi
 ENV PAGER=more EDITOR=vi HOME=/var/lib/ldap
