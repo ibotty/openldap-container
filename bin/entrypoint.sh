@@ -23,7 +23,7 @@ generate_config() {
             fi
             ;;
     esac
-    mkdir -p /etc/openldap/slapd.d
+    mkdir -p /data/ldap/config /data/ldap/data /etc/openldap/slapd.d
     envsubst < "$ldif" | /usr/sbin/slapadd -b cn=config -F /etc/openldap/slapd.d
 }
 
