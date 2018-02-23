@@ -5,7 +5,7 @@ EXPOSE 33389/tcp
 
 # set env vars that are required by ldapvi
 ENV PAGER=more EDITOR=vi HOME=/var/lib/ldap \
-    TMPLDIR=/usr/lib/openldap-container/templates
+    TMPLDIR=/var/lib/openldap-container/templates
 
 RUN set -x \
  && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
@@ -26,7 +26,7 @@ RUN set -x \
         chmod -R a+rwX "$d"; \
     done
 
-ADD templates /usr/lib/openldap-container/templates
+ADD templates /var/lib/openldap-container/templates
 ADD bin /usr/libexec/openldap-container
 
 USER 55
