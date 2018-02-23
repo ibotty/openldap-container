@@ -993,16 +993,4 @@ dn: olcDatabase={0}config,cn=config
 objectClass: olcDatabaseConfig
 olcDatabase: {0}config
 olcAccess: to * by dn.exact=gidNumber=${GID}+uidNumber=${UID},cn=peercred,cn=external,cn=auth write by * none
-olcSyncRepl: rid=001 provider=${LDAP_PROVIDER_URI} interval=${LDAP_SYNC_INTERVAL} schemachecking=off type=refreshAndPersist searchbase="cn=schema,cn=config" bindmethod=simple binddn="${LDAP_SYNC_BINDDN}" credentials="${LDAP_SYNC_PASSWORD}"
-
-dn: olcDatabase=${LDAP_SYNC_DB_NAME},cn=config
-objectClass: olcDatabaseConfig
-objectClass: olcMdbConfig
-olcDbIndex: entryUUID,entryCSN eq
-olcDbIndex: objectClass eq
-olcDbIndex: uid eq
-olcDatabase: ${LDAP_SYNC_DB_NAME}
-olcDbDirectory: /var/lib/ldap
-olcSuffix: ${LDAP_SUFFIX}
-olcRootDN: ${LDAP_ROOT_DN}
-olcSyncRepl: rid=002 provider=${LDAP_PROVIDER_URI} interval=${LDAP_SYNC_INTERVAL} schemachecking=off type=refreshAndPersist searchbase="${LDAP_SUFFIX}" bindmethod=simple binddn="${LDAP_SYNC_BINDDN}" credentials="${LDAP_SYNC_PASSWORD}"
+olcSyncRepl: rid=001 provider=${LDAP_PROVIDER_URI} interval=${LDAP_SYNC_INTERVAL} schemachecking=off type=refreshAndPersist bindmethod=simple binddn="${LDAP_SYNC_BINDDN}" credentials="${LDAP_SYNC_PASSWORD}" searchbase="cn=config" filter="(|(entryDn:dnSubtreeMatch:=cn=schema,cn=config)(entryDn=${LDAP_SYNC_DB_DN}))"
