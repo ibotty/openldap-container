@@ -8,6 +8,9 @@ LDAP_LISTEN_URIS="${LDAP_LISTEN_URIS-ldap://:33389 ldapi:///}"
 generate_config() {
     local ldif
 
+    GID="$(id -g)"
+    export GID UID
+
     case "$1" in
         /*)
             ldif="$1"

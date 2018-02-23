@@ -992,6 +992,7 @@ olcObjectClasses: {26}( 1.3.6.1.1.3.1 NAME 'uidObject' DESC 'RFC2377: uid obje
 dn: olcDatabase={0}config,cn=config
 objectClass: olcDatabaseConfig
 olcDatabase: {0}config
+olcAccess: to * by dn.exact=gidNumber=${GID}+uidNumber=${UID},cn=peercred,cn=external,cn=auth write by * none
 olcSyncRepl: rid=001 provider=${LDAP_PROVIDER_URI} interval=${LDAP_SYNC_INTERVAL} schemachecking=off type=refreshAndPersist searchbase="cn=schema,cn=config" bindmethod=simple binddn="${LDAP_SYNC_BINDDN}" credentials="${LDAP_SYNC_PASSWORD}"
 
 dn: olcDatabase=${LDAP_SYNC_DB_NAME},cn=config
