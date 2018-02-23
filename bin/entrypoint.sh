@@ -4,6 +4,7 @@ set -eu
 set -o pipefail
 
 LDAP_LISTEN_URIS="${LDAP_LISTEN_URIS-ldap://:33389 ldapi:///}"
+LDAP_SYNC_INTERVAL="${LDAP_SYNC_INTERVAL-00:00:30:00}"
 
 generate_config() {
     local ldif
